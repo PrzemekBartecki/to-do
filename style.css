@@ -1,0 +1,140 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	color: #666666;
+	font-family: 'RobotoDraft',
+		'Roboto',
+		sans-serif;
+	font-size: 14px;
+}
+
+h1 {
+	text-align: center;
+	margin: 20px 0;
+}
+
+input {
+	max-width: 450px;
+	height: 60px;
+	font-size: 35px;
+	padding: 10px 0px;
+	margin: 10px 15px;
+	display: block;
+	width: 100%;
+
+}
+
+.app {
+	margin: 0px auto;
+	width: 550px;
+	border: 5px solid rgb(133, 173, 129);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: flex-start;
+	min-height: 90vh;
+	max-height: 90vh;
+	padding-bottom: 30px;
+	background-color: #efefef;
+}
+
+.tasksList {
+	margin: 10px;
+	max-width: 450px;
+	overflow-y: auto;
+	/* max-height: 460px; */
+	max-height: 40vh;
+}
+
+#buttons {
+	max-width: 450px;
+	margin: 20px 15px;
+	height: auto;
+	width: 100%;
+}
+
+.btn {
+	width: 130px;
+	height: 40px;
+	border-radius: 10%;
+	margin: 10px 5px;
+}
+
+.btn:hover {
+	font-weight: 900;
+}
+
+ul {
+	display: block;
+	padding: 0;
+	margin: 30px 0 0 0;
+	list-style-type: none;
+}
+
+li {
+	box-sizing: border-box;
+	min-width: 250px;
+	text-align: center;
+	line-height: 75px;
+	border: 2px solid black;
+	font-size: 24px;
+	margin: 1px 0;
+	padding: 0 15px;
+	overflow-wrap: break-word;
+}
+
+li:hover {
+	color: #000;
+}
+
+.add {
+	background-color: rgb(9, 255, 0)
+}
+
+.delete {
+	background-color: rgb(238, 255, 0)
+}
+
+.clear {
+	background-color: rgb(255, 0, 0)
+}
+
+.flex {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+
+
+@media only screen and (max-width: 570px) {
+	.app {
+		width: 95vw;
+	}
+
+	li {
+		/* min-width: 0; */
+		width: 79vw;
+	}
+}
+
+@media only screen and (max-height: 480px) {
+	.tasksList {
+		max-height: 31vh;
+	}
+}
+
+@media only screen and (min-height: 735px) {
+	.tasksList {
+		max-height: 50vh;
+	}
+}
+
+@media only screen and (min-height: 890px) {
+	.tasksList {
+		max-height: 59vh;
+	}
+}
