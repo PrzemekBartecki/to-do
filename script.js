@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		var li = document.createElement('li');
 
 		if (task.value.trim() === '') {
+			var emptyTxt = task.value.replace(/\s/g, '')
+			task.value = emptyTxt;
 			task.placeholder = 'write a task';
 			return
 		} else {
