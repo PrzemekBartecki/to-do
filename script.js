@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			task.placeholder = 'to do ...';
 		}
 
-		li.innerText = task.value + ' task-number-' + counter++;
+		li.innerText = task.value + ' -#' + counter++;
 		ul.appendChild(li);
 		task.value = '';
 	});

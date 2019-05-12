@@ -4,33 +4,42 @@
 }
 
 body {
-	color: #666666;
-	font-family: 'RobotoDraft',
-		'Roboto',
+	font-family: 'Roboto',
 		sans-serif;
-	font-size: 14px;
+}
+
+.tittle {
+	margin: 20px 0;
+	text-align: center;
 }
 
 h1 {
-	text-align: center;
-	margin: 20px 0;
+	font-family: 'Indie Flower',
+		cursive;
+	font-size: 30px;
+	text-shadow: 2px 1px 6px black;
+}
+
+p {
+	font-size: 20px;
 }
 
 input {
 	max-width: 450px;
 	height: 60px;
 	font-size: 35px;
-	padding: 10px 0px;
+	padding: 10px 0px 10px 20px;
 	margin: 10px 15px;
 	display: block;
 	width: 100%;
-
+	background-color: #ECECEC;
+	border: none;
 }
 
 .app {
-	margin: 0px auto;
+	margin: 0 auto;
 	width: 550px;
-	border: 5px solid rgb(133, 173, 129);
+	border: 2px solid #1A1A1A;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -38,15 +47,14 @@ input {
 	min-height: 90vh;
 	max-height: 90vh;
 	padding-bottom: 30px;
-	background-color: #efefef;
 }
 
 .tasksList {
 	margin: 10px;
 	max-width: 450px;
+	min-width: 60px;
 	overflow-y: auto;
-	/* max-height: 460px; */
-	max-height: 40vh;
+	max-height: 39vh;
 }
 
 #buttons {
@@ -59,12 +67,13 @@ input {
 .btn {
 	width: 130px;
 	height: 40px;
-	border-radius: 10%;
 	margin: 10px 5px;
+	font-size: 20px;
 }
 
 .btn:hover {
 	font-weight: 900;
+	border: 1px solid #000;
 }
 
 ul {
@@ -76,36 +85,37 @@ ul {
 
 li {
 	box-sizing: border-box;
-	min-width: 250px;
+	min-width: 290px;
 	text-align: center;
 	line-height: 75px;
-	border: 2px solid black;
 	font-size: 24px;
-	margin: 1px 0;
+	margin: 5px 0;
 	padding: 0 15px;
 	overflow-wrap: break-word;
+	background-color: #ECECEC;
 }
 
 li:hover {
-	color: #000;
+	font-weight: 900;
 }
 
 .add {
-	background-color: rgb(9, 255, 0)
+	background-color: #5F9364;
 }
 
 .delete {
-	background-color: rgb(238, 255, 0)
+	background-color: #DED47D;
 }
 
 .clear {
-	background-color: rgb(255, 0, 0)
+	background-color: #D46472;
 }
 
 .flex {
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
+
 }
 
 
@@ -124,6 +134,7 @@ li:hover {
 @media only screen and (max-height: 480px) {
 	.tasksList {
 		max-height: 31vh;
+		margin: 0 10px;
 	}
 }
 
