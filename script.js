@@ -4,13 +4,25 @@ document.addEventListener("DOMContentLoaded", function () {
 	var btnDel = document.querySelector('.btn.delete');
 	var btnCl = document.querySelector('.btn.clear');
 	var counter = 1;
+	var ul = document.querySelector('ul');
+	var task = document.querySelector('input');
 
-	btnAdd.addEventListener('click', function () {
+	var arrayTasks = localStorage.getItem('taskList') ?
+		JSON.parse(localStorage.getItem('taskList')) : [];
 
-		var task = document.querySelector('input');
-		var ul = document.querySelector('ul');
+	localStorage.setItem('taskList', JSON.stringify(arrayTasks))
+	var arrayTasks2 = JSON.parse(localStorage.getItem('taskList'))
+
+	var liMaker = function (text) {
 		var li = document.createElement('li');
+		li.textContent = text + ' -#' + counter++;;
+		ul.appendChild(li);
+	};
 
+	/*
+	 * Dodajemy element
+	 */
+	btnAdd.addEventListener('click', function () {
 		if (task.value.trim() === '') {
 			var emptyTxt = task.value.replace(/\s/g, '')
 			task.value = emptyTxt;
@@ -19,21 +31,37 @@ document.addEventListener("DOMContentLoaded", function () {
 		} else {
 			task.placeholder = 'to do ...';
 		}
+		var taskValue = task.value
 
-		li.innerText = task.value + ' -#' + counter++;
-		ul.appendChild(li);
+		arrayTasks.push(taskValue);
+		localStorage.setItem('taskList', JSON.stringify(arrayTasks));
+		liMaker(taskValue);
 		task.value = '';
 	});
 
-	btnDel.addEventListener('click', function () {
-
-		var lastTask = document.querySelector('ul li:last-child')
-		lastTask.parentElement.removeChild(lastTask);
-		counter--
+	arrayTasks2.forEach(function (e) {
+		liMaker(e)
 	});
 
-	btnCl.addEventListener('click', function () {
+	/*
+	 * Usuwamy ostatni element
+	 */
+	btnDel.addEventListener('click', function () {
+		var lastTask = document.querySelector('ul li:last-child')
+		if (lastTask) {
+			lastTask.parentElement.removeChild(lastTask);
+			counter--
+		}
 
+		arrayTasks.pop();
+		localStorage.setItem('taskList', JSON.stringify(arrayTasks));
+	});
+
+	/*
+	 * Usuwamy całą listę
+	 */
+	btnCl.addEventListener('click', function () {
+		localStorage.clear();
 		var taskList = document.querySelectorAll('ul li')
 
 		for (let i = 0; i < taskList.length; i++) {
@@ -41,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 
 		counter = 1;
+		arrayTasks = [];
 	});
-
 
 });
