@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		li.textContent = text + ' -#' + counter++;;
 		ul.appendChild(li);
 	};
-
+	/*test 2 spradzajc PR*/
 	/*
 	 * Dodajemy element
 	 */
