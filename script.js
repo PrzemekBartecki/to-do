@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	let counter = 1;
 	const ul = document.querySelector('ul');
 	let task = document.querySelector('input');
-
+	/*test*/
 	const arrayTasks = localStorage.getItem('taskList') ?
 		JSON.parse(localStorage.getItem('taskList')) : [];
 
