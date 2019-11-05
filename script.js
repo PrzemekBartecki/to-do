@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
+	setTimeout(() => {
+		let liAppear = document.querySelectorAll('.appear');
+		for (let i = 0; i < liAppear.length; i++) {
+			liAppear[i].classList.remove('appear');
+			console.log('usuwanie');
+		}
+	}, 1);
+
 
 	const btnAdd = document.querySelector('.btn.add');
 	const btnDel = document.querySelector('.btn.delete');
@@ -6,23 +14,24 @@ document.addEventListener("DOMContentLoaded", function () {
 	let counter = 1;
 	const ul = document.querySelector('ul');
 	let task = document.querySelector('input');
-	/*test*/
+
 	const arrayTasks = localStorage.getItem('taskList') ?
 		JSON.parse(localStorage.getItem('taskList')) : [];
 
 	localStorage.setItem('taskList', JSON.stringify(arrayTasks))
 	let arrayTasks2 = JSON.parse(localStorage.getItem('taskList'))
 
-	let liMaker = function (text) {
+	let liMaker = (text) => {
 		var li = document.createElement('li');
-		li.textContent = text + ' -#' + counter++;;
+		li.textContent = text + ' -#' + counter++;
+		li.classList.add('appear')
 		ul.appendChild(li);
 	};
 
 	/*
 	 * Dodajemy element
 	 */
-	btnAdd.addEventListener('click', function () {
+	btnAdd.addEventListener('click', () => {
 		if (task.value.trim() === '') {
 			let emptyTxt = task.value.replace(/\s/g, '')
 			task.value = emptyTxt;
@@ -31,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		} else {
 			task.placeholder = 'to do ...';
 		}
+
 		let taskValue = task.value
 
 		arrayTasks.push(taskValue);
@@ -39,17 +49,20 @@ document.addEventListener("DOMContentLoaded", function () {
 		task.value = '';
 	});
 
-	arrayTasks2.forEach(function (e) {
+	arrayTasks2.forEach((e) => {
 		liMaker(e)
 	});
 
 	/*
 	 * Usuwamy ostatni element
 	 */
-	btnDel.addEventListener('click', function () {
-		let lastTask = document.querySelector('ul li:last-child')
+	btnDel.addEventListener('click', () => {
+		let lastTask = document.querySelector('ul li:last-child');
+		lastTask.classList.add('removeLi');
 		if (lastTask) {
-			lastTask.parentElement.removeChild(lastTask);
+			setTimeout(() => {
+				lastTask.parentElement.removeChild(lastTask);
+			}, 1900);
 			counter--
 		}
 
@@ -60,12 +73,19 @@ document.addEventListener("DOMContentLoaded", function () {
 	/*
 	 * Usuwamy całą listę
 	 */
-	btnCl.addEventListener('click', function () {
+	btnCl.addEventListener('click', () => {
 		localStorage.clear();
 		let taskList = document.querySelectorAll('ul li')
 
 		for (let i = 0; i < taskList.length; i++) {
-			taskList[i].parentNode.removeChild(taskList[i]);
+			if (i % 2 == 0) {
+				taskList[i].classList.add('leftDirection')
+			} else {
+				taskList[i].classList.add('rightDirection')
+			}
+			setTimeout(() => {
+				taskList[i].parentNode.removeChild(taskList[i]);
+			}, 4000);
 		}
 
 		counter = 1;
