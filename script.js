@@ -1,11 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
+	/*Magic Number*/
+	const animationDelay = 1;
+	const removeLastTask = 1900;
+	const clearList = 4000;
+
+
 	setTimeout(() => {
 		let liAppear = document.querySelectorAll('.appear');
 		for (let i = 0; i < liAppear.length; i++) {
 			liAppear[i].classList.remove('appear');
-			console.log('usuwanie');
 		}
-	}, 1);
+	}, animationDelay);
 
 
 	const btnAdd = document.querySelector('.btn.add');
@@ -58,11 +63,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	 */
 	btnDel.addEventListener('click', () => {
 		let lastTask = document.querySelector('ul li:last-child');
-		lastTask.classList.add('removeLi');
+
 		if (lastTask) {
+			lastTask.classList.add('removeLi');
 			setTimeout(() => {
 				lastTask.parentElement.removeChild(lastTask);
-			}, 1900);
+			}, removeLastTask);
 			counter--
 		}
 
@@ -85,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 			setTimeout(() => {
 				taskList[i].parentNode.removeChild(taskList[i]);
-			}, 4000);
+			}, clearList);
 		}
 
 		counter = 1;
