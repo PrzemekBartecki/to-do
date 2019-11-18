@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-	/*Magic Number*/
+
 	const animationDelay = 1;
 	const removeLastTask = 1900;
 	const clearList = 4000;
-
 
 	setTimeout(() => {
 		let liAppear = document.querySelectorAll('.appear');
@@ -11,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			liAppear[i].classList.remove('appear');
 		}
 	}, animationDelay);
-
 
 	const btnAdd = document.querySelector('.btn.add');
 	const btnDel = document.querySelector('.btn.delete');
@@ -34,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	};
 
 	/*
-	 * Dodajemy element
+	 * add element
 	 */
 	btnAdd.addEventListener('click', () => {
 		if (task.value.trim() === '') {
@@ -59,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 
 	/*
-	 * Usuwamy ostatni element
+	 * remove last element
 	 */
 	btnDel.addEventListener('click', () => {
 		let lastTask = document.querySelector('ul li:last-child');
@@ -77,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 
 	/*
-	 * Usuwamy całą listę
+	 * clear list
 	 */
 	btnCl.addEventListener('click', () => {
 		localStorage.clear();
