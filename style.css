@@ -81,6 +81,7 @@ ul {
 	padding: 0;
 	margin: 30px 0 0 0;
 	list-style-type: none;
+	overflow: hidden;
 }
 
 li {
@@ -93,6 +94,22 @@ li {
 	padding: 0 15px;
 	overflow-wrap: break-word;
 	background-color: #ECECEC;
+}
+
+.appear {
+	animation: appear 3s both 1;
+}
+
+.removeLi {
+	animation: remove 3s both 1;
+}
+
+.rightDirection {
+	animation: right forwards 2s;
+}
+
+.leftDirection {
+	animation: left forwards 2s;
 }
 
 li:hover {
@@ -147,5 +164,48 @@ li:hover {
 @media only screen and (min-height: 890px) {
 	.tasksList {
 		max-height: 59vh;
+	}
+}
+
+/* animacje */
+
+@keyframes appear {
+	0% {
+		opacity: 0
+	}
+
+	100% {
+		opacity 1
+	}
+}
+
+@keyFrames remove {
+
+	0% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(0.02);
+	}
+}
+
+@keyframes left {
+	0% {
+		transform: translateX(0)
+	}
+
+	100% {
+		transform: translateX(-300%)
+	}
+}
+
+@keyframes right {
+	0% {
+		transform: translateX(0)
+	}
+
+	100% {
+		transform: translateX(300%)
 	}
 }
