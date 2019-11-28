@@ -1,16 +1,12 @@
 {
   "tasks": [
     {
-      "task": "zakupy",
+      "task": "apples",
       "id": 1
     },
     {
-      "task": "umyć domy",
+      "task": "wather",
       "id": 2
-    },
-    {
-      "{\"task\":\"test\",\"id\":1}": "",
-      "id": 3
     }
   ]
 }
