@@ -19,5 +19,5 @@ npm install -g json-server
 Start JSON Server
 
 ```bash
-json-server --tasksdb.json
+json-server tasksdb.json
 ```
