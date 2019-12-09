@@ -1,12 +1,20 @@
 {
   "tasks": [
     {
-      "task": "apples",
+      "task": "ziemniaki 1kg",
       "id": 1
     },
     {
-      "task": "wather",
+      "task": "3 pomidory",
       "id": 2
+    },
+    {
+      "task": "2 banany",
+      "id": 3
+    },
+    {
+      "task": "cztery pomarańcze",
+      "id": 4
     }
   ]
 }
