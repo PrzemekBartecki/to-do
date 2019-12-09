@@ -1,27 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
-	let ulList = $('ul');
+
+	const removeLastTask = 1900;
 	const btnAdd = document.querySelector('.btn.add');
 	const btnDel = document.querySelector('.btn.delete');
 	const btnCl = document.querySelector('.btn.clear');
-	let counter = 1;
-
 	const ul = document.querySelector('ul');
 	let task = document.querySelector('input');
+	let counter = 1;
+	let $ul = $('ul');
 
 	let liMaker = (text) => {
+
 		var li = document.createElement('li');
 		console.log("watość teskt to ", text.task);
 		li.textContent = text.task + ' -#' + counter++;
-		//li.classList.add('appear');
 		li.setAttribute("data-id", text.id)
 		ul.appendChild(li);
 	};
 
-
 	/*read */
-
 	let readTask = () => {
-		ulList.empty();
+		$ul.empty();
 		$.ajax({
 			url: "http://localhost:3000/tasks",
 			type: "GET"
@@ -34,9 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	};
 	readTask();
 
-
 	/*create*/
-
 	let createTask = (data) => {
 		$.ajax({
 			url: 'http://localhost:3000/tasks',
@@ -48,19 +45,16 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	/*delete*/
-
 	let deleteTask = (id) => {
 		$.ajax({
 			url: 'http://localhost:3000/tasks/' + id,
 			type: 'DELETE'
-		}).done(() => {
-			readTask();
 		})
 	};
 
 	/*add action*/
-
 	btnAdd.addEventListener('click', () => {
+
 		if (task.value.trim() === '') {
 			let emptyTxt = task.value.replace(/\s/g, '')
 			task.value = emptyTxt;
@@ -75,8 +69,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 		createTask(data)
 		task.value = '';
+		counter = 1;
 	});
-
 
 	/*remove action*/
 	btnDel.addEventListener('click', () => {
@@ -85,24 +79,27 @@ document.addEventListener("DOMContentLoaded", function () {
 		if (lastTask) {
 			let idTask = lastTask.getAttribute('data-id')
 			lastTask.classList.add('removeLi');
-			lastTask.parentElement.removeChild(lastTask);
-
-			counter--
-			console.log("idTask w funkcj usun osttn element to", idTask);
-			deleteTask(idTask);
+			setTimeout(() => {
+				lastTask.parentElement.removeChild(lastTask);
+				deleteTask(idTask);
+			}, removeLastTask);
 		}
+		counter--;
 	});
 
 	/*clear acton*/
 	btnCl.addEventListener('click', () => {
 		let tasksList = document.querySelectorAll('ul li');
 		for (let i = 0; i < tasksList.length; i++) {
+			if (i % 2 == 0) {
+				tasksList[i].classList.add('leftDirection')
+			} else {
+				tasksList[i].classList.add('rightDirection')
+			}
 			let idTask = tasksList[i].getAttribute('data-id');
 			deleteTask(idTask);
-
 		}
-
+		counter = 1;
 	});
-
 
 })
